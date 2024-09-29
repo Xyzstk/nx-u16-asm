@@ -27,6 +27,10 @@
 			{
 				"name": "support.function.mnemonic.branch.u16asm",
 				"match": "\\b(?i)(bl?|gjmp|(bc[ \\t]+|g?b)(ge|nc|lt|cy|gt|le|ges|lts|gts|les|ne|nz|eq|nv|ov|ps|ns|al)|g?bz|bc[ \\t]+zf)(?-i)\\b"
+			},
+			{
+				"name": "invalid.illegal.condition.u16asm",
+				"match": "\\b(?i)(bc|ge|nc|lt|cy|gt|le|ges|lts|gts|les|ne|nz|eq|zf|nv|ov|ps|ns|al)(?-i)\\b"
 			}]
 		},
 		"registers": {
@@ -37,15 +41,15 @@
 		},
 		"numerics": {
 			"patterns": [{
-				"match": "(\\b|#)(?i)-?\\d[0-9a-fA-F]*h(?-i)\\b",
+				"match": "(\\b|#-?|-)(?i)\\d[0-9a-fA-F]*h(?-i)\\b",
 				"name": "constant.numeric.hex.u16asm"
 			},
 			{
-				"match": "(\\b|#)-?\\d+\\b",
+				"match": "(\\b|#-?|-)\\d+\\b",
 				"name": "constant.numeric.dec.u16asm"
 			},
 			{
-				"match": "(\\b|#)(?i)-?[01]+b(?-i)\\b",
+				"match": "(\\b|#-?|-)(?i)[01]+b(?-i)\\b",
 				"name": "constant.numeric.bin.u16asm"
 			}]
 		},
