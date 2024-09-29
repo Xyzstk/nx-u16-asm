@@ -1,0 +1,25 @@
+{
+  "name": "nx-u16-asm",
+  "displayName": "nX-U16 ASM",
+  "description": "Syntax highlighting for nX-U16 assembly",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "u16asm",
+      "aliases": ["nX-U16", "u16asm"],
+      "extensions": [".asm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "u16asm",
+      "scopeName": "source.u16asm",
+      "path": "./syntaxes/u16asm.tmLanguage.json"
+    }]
+  }
+}

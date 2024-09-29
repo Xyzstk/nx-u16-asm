@@ -1,0 +1,88 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "nX-U16",
+	"patterns": [
+		{
+			"include": "#mnemonics"
+		},
+		{
+			"include": "#registers"
+		},
+		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		}
+	],
+	"repository": {
+		"mnemonics": {
+			"patterns": [{
+				"name": "support.function.mnemonic.general.u16asm",
+				"match": "\\b(?i)(addc?|and|brk|cmpc?|cplc?|da[as]|dec|div?|edsr|ei|extbw|iceswi|inc|l|lea|mov|mul|neg|nop|or|pop|push|r(b|c|t(i|ice(psw)?)?)|s(b|c|t)|sllc?|sra|srlc?|subc?|swi|tb|xor)(?-i)\\b"
+			},
+			{
+				"name": "support.function.mnemonic.branch.u16asm",
+				"match": "\\b(?i)(bl?|gjmp|(bc[ \\t]+|g?b)(ge|nc|lt|cy|gt|le|ges|lts|gts|les|ne|nz|eq|nv|ov|ps|ns|al)|g?bz|bc[ \\t]+zf)(?-i)\\b"
+			}]
+		},
+		"registers": {
+			"patterns": [{
+				"name": "storage.register.u16asm",
+				"match": "(?i)\\b(c?r(0|[2-9]|1[0-5]?)|c?er([02468]|1[024])|c?xr([048]|12)|c?qr[08]|bp|fp|dsr|pc|e?lr|ea|sp|e?psw|ecsr)\\b"
+			}]
+		},
+		"numerics": {
+			"patterns": [{
+				"match": "(\\b|#)(?i)-?\\d[0-9a-fA-F]*h(?-i)\\b",
+				"name": "constant.numeric.hex.u16asm"
+			},
+			{
+				"match": "(\\b|#)-?\\d+\\b",
+				"name": "constant.numeric.dec.u16asm"
+			},
+			{
+				"match": "(\\b|#)(?i)-?[01]+b(?-i)\\b",
+				"name": "constant.numeric.bin.u16asm"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.u16asm",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.u16asm",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"match": ";.*$",
+					"name": "comment.u16asm"
+				},
+				{
+					"begin": "\\/\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "comment.begin.u16asm"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "comment.end.u16asm"
+						}
+					},
+					"end": "\\*\\/",
+					"name": "comment.u16asm"
+				}
+			]
+		}
+	},
+	"scopeName": "source.u16asm"
+}
