@@ -16,6 +16,12 @@
 		},
 		{
 			"include": "#comments"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#macro"
 		}
 	],
 	"repository": {
@@ -86,6 +92,60 @@
 					"name": "comment.u16asm"
 				}
 			]
+		},
+		"directives": {
+			"patterns": [{
+				"match": "(^|\\s)(?i)(type|model|small|large|near|(no)?far|romwindow|noromwin|end|equ|set|code|table|[td]bit|(nv)?(data|bit)|none|any|number|([bcdrt]|nvb?|stack)seg|segment|at|org|align|d[bsw]|(no)?chkdbdw|public|extrn|comm|fastfloat|dup|dynamic|nvram|unit|word)(?-i)\\b",
+				"name": "keyword.control.directive.general.u16asm"
+			},
+			{
+				"match": "\\b(?i)(byte[1234]|word[12]|seg|offset|size|bpos|ovl_(seg|offset|address))(?-i)\\b",
+				"name": "keyword.control.directive.operator.u16asm"
+			},
+			{
+				"match": "(^|\\s)(?i)c(argument|block(end)?|file|version|function(end)?|s?global|label|linea?|s?local|typedef|ret|(enum|struct|union)(mem|tag))(?-i)\\b",
+				"name": "keyword.control.directive.csource.u16asm"
+			},
+			{
+				"match": "(^|\\s)(?i)((no)?(obj|prn|err|debug|list|sym|ref)|page|date|title|tab)(?-i)\\b",
+				"name": "keyword.control.directive.listing.u16asm"
+			},
+			{
+				"match": "^\\s*(?i)(define|include|(end|else)?if|ifn?def|else)(?-i)\\b",
+				"name": "meta.preprocessor"
+			},
+			{
+				"match": "^\\s*\\$\\s+(?i)(_?(else)?if|else|endif|set|reset)(?-i)\\b",
+				"name": "meta.preprocessor"
+			}]
+		},
+		"macro": {
+			"patterns": [{
+				"begin": "\\b(?i)(macro|rept|irp)(?-i)\\b",
+				"end": "\\b(?i)endm(?-i)\\b",
+				"name": "meta.preprocessor",
+				"patterns": [
+					{
+						"name": "keyword.control.directive.macro.u16asm",
+						"match": "\\b(?i)(local|exitm)(?-i)\\b"
+					},
+					{
+						"include": "#macro"
+					},
+					{
+						"include": "#mnemonics"
+					},
+					{
+						"include": "#registers"
+					},
+					{
+						"include": "#numerics"
+					},
+					{
+						"include": "#comments"
+					}
+				]
+			}]
 		}
 	},
 	"scopeName": "source.u16asm"
